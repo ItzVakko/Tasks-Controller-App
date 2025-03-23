@@ -1,4 +1,5 @@
 const List = require("../models/listModel");
+const Board = require("../models/boardModel");
 
 exports.createList = async (req, res) => {
   try {
