@@ -25,3 +25,12 @@ exports.getCards = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
+exports.getCard = async (req, res) => {
+  try {
+    const card = await Card.findOne();
+    res.status(201).json(card);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
