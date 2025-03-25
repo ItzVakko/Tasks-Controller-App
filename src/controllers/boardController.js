@@ -24,3 +24,12 @@ exports.getBoards = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
+exports.getBoard = async (req, res) => {
+  try {
+    const board = await Board.findOne().populate("lists");
+    res.status(201).json(board);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};

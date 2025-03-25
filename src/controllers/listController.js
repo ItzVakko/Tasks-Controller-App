@@ -27,3 +27,12 @@ exports.getLists = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
+exports.getList = async (req, res) => {
+  try {
+    const list = await List.findOne().populate("cards");
+    res.status(201).json(list);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
