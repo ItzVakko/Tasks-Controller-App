@@ -19,7 +19,9 @@ exports.createCard = async (req, res) => {
 
 exports.getCards = async (req, res) => {
   try {
-    const cards = await Card.find({ list: req.params.listId });
+    const cards = await Card.find({ list: req.params.listId }).populate(
+      "cards"
+    );
     res.status(200).json(cards);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -29,7 +31,7 @@ exports.getCards = async (req, res) => {
 exports.getCard = async (req, res) => {
   try {
     const card = await Card.findOne();
-    res.status(201).json(card);
+    res.status(201).json(card).populate("cards");
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

@@ -19,9 +19,7 @@ exports.createList = async (req, res) => {
 
 exports.getLists = async (req, res) => {
   try {
-    const lists = await List.find({ board: req.params.boardId }).populate(
-      "cards"
-    );
+    const lists = await List.find().populate("cards");
     res.status(200).json(lists);
   } catch (err) {
     res.status(400).json({ error: err.message });
